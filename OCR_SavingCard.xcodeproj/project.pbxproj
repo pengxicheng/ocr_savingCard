@@ -29,6 +29,10 @@
 		9C52A7491CDAEAC400F42BFF /* libexbankcardcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C52A7381CDAEAC400F42BFF /* libexbankcardcore.a */; };
 		9C52A74A1CDAEAC400F42BFF /* libexbankcardcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C52A73D1CDAEAC400F42BFF /* libexbankcardcore.a */; };
 		9C52A74D1CDAECDF00F42BFF /* ScanCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A74C1CDAECDF00F42BFF /* ScanCardViewController.m */; };
+		C8E424E51D6EDCE700673634 /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E424E41D6EDCE700673634 /* CaptureManager.m */; };
+		C8E424E71D6EDD5100673634 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E424E61D6EDD5100673634 /* AVFoundation.framework */; };
+		C8E424EA1D6EEB9500673634 /* IFlyFaceImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E424E91D6EEB9500673634 /* IFlyFaceImage.m */; };
+		C8E424ED1D6FD3DF00673634 /* PermissionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E424EC1D6FD3DF00673634 /* PermissionDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,13 @@
 		9C52A73D1CDAEAC400F42BFF /* libexbankcardcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardcore.a; sourceTree = "<group>"; };
 		9C52A74B1CDAECDF00F42BFF /* ScanCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCardViewController.h; sourceTree = "<group>"; };
 		9C52A74C1CDAECDF00F42BFF /* ScanCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCardViewController.m; sourceTree = "<group>"; };
+		C8E424E31D6EDCE700673634 /* CaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
+		C8E424E41D6EDCE700673634 /* CaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
+		C8E424E61D6EDD5100673634 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C8E424E81D6EEB9500673634 /* IFlyFaceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFaceImage.h; sourceTree = "<group>"; };
+		C8E424E91D6EEB9500673634 /* IFlyFaceImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFlyFaceImage.m; sourceTree = "<group>"; };
+		C8E424EB1D6FD3DF00673634 /* PermissionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionDetector.h; sourceTree = "<group>"; };
+		C8E424EC1D6FD3DF00673634 /* PermissionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8E424E71D6EDD5100673634 /* AVFoundation.framework in Frameworks */,
 				9C52A7491CDAEAC400F42BFF /* libexbankcardcore.a in Frameworks */,
 				9C52A74A1CDAEAC400F42BFF /* libexbankcardcore.a in Frameworks */,
 				9C52A7461CDAEAC400F42BFF /* libexidcardios.a in Frameworks */,
@@ -128,6 +140,7 @@
 		9C52A6D51CDAEA3900F42BFF = {
 			isa = PBXGroup;
 			children = (
+				C8E424E61D6EDD5100673634 /* AVFoundation.framework */,
 				9C52A6E01CDAEA3900F42BFF /* OCR_SavingCard */,
 				9C52A6FA1CDAEA3900F42BFF /* OCR_SavingCardTests */,
 				9C52A7051CDAEA3900F42BFF /* OCR_SavingCardUITests */,
@@ -155,6 +168,12 @@
 				9C52A6EA1CDAEA3900F42BFF /* Main.storyboard */,
 				9C52A74B1CDAECDF00F42BFF /* ScanCardViewController.h */,
 				9C52A74C1CDAECDF00F42BFF /* ScanCardViewController.m */,
+				C8E424E31D6EDCE700673634 /* CaptureManager.h */,
+				C8E424E41D6EDCE700673634 /* CaptureManager.m */,
+				C8E424E81D6EEB9500673634 /* IFlyFaceImage.h */,
+				C8E424E91D6EEB9500673634 /* IFlyFaceImage.m */,
+				C8E424EB1D6FD3DF00673634 /* PermissionDetector.h */,
+				C8E424EC1D6FD3DF00673634 /* PermissionDetector.m */,
 				9C52A6ED1CDAEA3900F42BFF /* Assets.xcassets */,
 				9C52A6EF1CDAEA3900F42BFF /* LaunchScreen.storyboard */,
 				9C52A6F21CDAEA3900F42BFF /* Info.plist */,
@@ -474,6 +493,9 @@
 				9C52A6E91CDAEA3900F42BFF /* ViewController.m in Sources */,
 				9C52A74D1CDAECDF00F42BFF /* ScanCardViewController.m in Sources */,
 				9C52A7451CDAEAC400F42BFF /* KSHPreviewView.m in Sources */,
+				C8E424E51D6EDCE700673634 /* CaptureManager.m in Sources */,
+				C8E424EA1D6EEB9500673634 /* IFlyFaceImage.m in Sources */,
+				C8E424ED1D6FD3DF00673634 /* PermissionDetector.m in Sources */,
 				9C52A7421CDAEAC400F42BFF /* KSHCameraController.m in Sources */,
 				9C52A7431CDAEAC400F42BFF /* KSHContextManager.m in Sources */,
 				9C52A7401CDAEAC400F42BFF /* BinCodeSearch.m in Sources */,
@@ -621,6 +643,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = OCR_SavingCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -640,6 +663,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = OCR_SavingCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

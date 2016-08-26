@@ -10,6 +10,7 @@
 #import "ScanCardViewController.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cardImage;
 
 @end
 
@@ -33,6 +34,12 @@
         ScanCardViewController *svc = segue.destinationViewController;
         [svc passValue:^(NSString *cardNo) {
             self.textLabel.text = cardNo;
+        }];
+        [svc passImageValue:^(UIImage *cardImage) {
+            if (cardImage) {
+              self.cardImage.image = cardImage;
+            }
+            
         }];
     }
 }

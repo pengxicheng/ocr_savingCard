@@ -13,15 +13,21 @@
 #import "KSHOverlayView.h"
 #import "KSFrameView.h"
 
+
 @interface ScanCardViewController ()<KSHRecDelegate>
 {
     CGRect frameBounders;
+    //拍照操作
+    AVCaptureStillImageOutput *myStillImageOutput;
+    UIView *backView;//照片背景
+    UIImageView *imageView;//照片展示
 }
 @property (nonatomic, strong) KSHCameraController *cameraController;
 @property (strong, nonatomic) KSHPreviewView *previewView;
 @property (strong, nonatomic) KSFrameView *frameView;
 @property (weak, nonatomic) IBOutlet KSHOverlayView *overlayView;
 @property (copy,nonatomic) passValue block;
+@property (copy,nonatomic) passImage imageBlock;
 @end
 
 @implementation ScanCardViewController
@@ -44,7 +50,6 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    //    self.navigationController.navigationBarHidden = NO;
     if([self.cameraController.captureSession isRunning])
     {
         [self.cameraController.captureSession stopRunning];
@@ -54,17 +59,16 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
 }
 
 -(void)viewWillAppear:(BOOL)animated
-//-(void)viewDidAppear:(BOOL)animated
 {
+    
+     [super viewWillAppear:animated];
     if([self.cameraController.captureSession isRunning] == NO)
     {
         [self.cameraController.captureSession startRunning];
         [self.cameraController resetRecParams];
     }
-    //    [self.cameraController resetRecParams];
-    //    [super viewDidAppear:animated];
     
-    [super viewWillAppear:animated];
+   
 }
 
 - (KSHCameraController *)cameraController {
@@ -97,20 +101,6 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
 }
 
 
-//- (BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
-//
-//-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-//{
-//    return UIInterfaceOrientationLandscapeRight;
-//}
-//
-//-(NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationMaskLandscapeRight;
-//}
 
 
 - (void)viewDidLoad {
@@ -118,17 +108,9 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
     frameBounders = [UIScreen mainScreen].bounds;
     
     [self.view insertSubview:self.frameView atIndex:0];
-    // Do any additional setup after loading the view from its nib.
-    //    self.overlayView.tapToFocusEnabled = self.cameraController.cameraSupportsTapToFocus;
-    //    self.overlayView.tapToExposeEnabled = self.cameraController.cameraSupportsTapToExpose;
-    //    self.overlayView.tapedHandelDelegate = self;
     
-    //    self.previewView.coreImageContext = [KSHContextManager sharedInstance].ciContext;
-    //
-    //    self.cameraController.imageTarget = self.previewView;
     self.cameraController.recDelegate = self;
     
-    //    [self.view insertSubview:self.previewView atIndex:0];
     
     self.cameraController.sessionPreset = AVCaptureSessionPreset1280x720;
     
@@ -150,6 +132,7 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
         //        view.transform = transform;
         //        [view setFrame:CGRectMake(0, -250, 320, 568)];
         [self.cameraController startSession];
+        
     }
     else {
         
@@ -214,6 +197,9 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
        //    self.cardNumberTextField.text = str;
     [self.cameraController stopSession];
     self.block(str);
+    if (img) {
+        self.imageBlock(img);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -235,7 +221,54 @@ CGRect getPreViewFrame( int previewWidth, int previewHeight)
     self.block = block;
 }
 
+- (void)passImageValue:(passImage)block
+{
+    self.imageBlock = block;
+
+}
+
 #pragma mark - Navigation
+
+
+#pragma mark --- 拍照
+-(void)didClickTakePhoto
+{
+    AVCaptureConnection *myVideoConnection = nil;
+    
+//    //从 AVCaptureStillImageOutput 中取得正确类型的 AVCaptureConnection
+//    for (AVCaptureConnection *connection in myStillImageOutput.connections) {
+//        for (AVCaptureInputPort *port in [connection inputPorts]) {
+//            if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
+//                
+//                myVideoConnection = connection;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    //撷取影像（包含拍照音效）
+//    [myStillImageOutput captureStillImageAsynchronouslyFromConnection:myVideoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+//        
+//        //完成撷取时的处理程序(Block)
+//        if (imageDataSampleBuffer) {
+//            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+//            
+//            //取得的静态影像
+//            UIImage *myImage = [[UIImage alloc] initWithData:imageData];
+//            imageView.backgroundColor = [UIColor lightGrayColor];
+//            imageView.image = myImage;
+//            
+//            imageView.frame = CGRectMake(0, 10, ScreenWidth, ScreenWidth*myImage.size.height/myImage.size.width);
+//            
+//            [self.view addSubview:backView];
+//            
+//            //停止摄像
+//            [self.previewLayer.session stopRunning];
+//            
+//            [self delateNumber];
+//        }
+//    }];
+}
 
 
 

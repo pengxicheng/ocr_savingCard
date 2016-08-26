@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 typedef void (^passValue)(NSString* cardNo);
+typedef void (^passImage)(UIImage* cardImage);
 @interface ScanCardViewController : UIViewController
 - (void)passValue:(passValue)block;
+- (void)passImageValue:(passImage)block;
 @end
